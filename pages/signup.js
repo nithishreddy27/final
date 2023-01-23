@@ -30,7 +30,7 @@ const Signup = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push(`/addDetails/?email=${body.username}`)
+        Router.push(`/addDetails/${body.username}`)
 
       } else {
         throw new Error(await res.text())
