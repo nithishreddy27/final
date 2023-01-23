@@ -31,7 +31,8 @@ const Signup = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/login')
+        Router.push(`/addDetails/?email=${body.username}`)
+
       } else {
         throw new Error(await res.text())
       }
@@ -42,21 +43,19 @@ const Signup = () => {
   }
 
   return (
-    <Layout>
-      <div className="login">
+    <>
+    <img className="absolute top-0 bottom-0"
+        src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
+        alt=""
+      />
+      <div className="login z-40">
+        
         <Form isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>
-      <style jsx>{`
-        .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
-    </Layout>
+      </>
+  
   )
+
 }
 
 export default Signup

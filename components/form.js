@@ -1,81 +1,37 @@
 import Link from 'next/link'
 
 const Form = ({ isLogin, errorMessage, onSubmit }) => (
-  <form onSubmit={onSubmit}>
-    <label>
-      <span>Username</span>
-      <input type="text" name="username" required />
-    </label>
-    <label>
-      <span>Password</span>
-      <input type="password" name="password" required />
-    </label>
-    {!isLogin && (
-      <label>
-        <span>Repeat password</span>
-        <input type="password" name="rpassword" required />
+  <form onSubmit={onSubmit}  className="bg-white shadow-md rounded-lg px-12 pt-20 pb-12 mb-4">
+    {/* <div className='sm:mx-auto sm:w-full sm:max-w-md'> */}
+
+   <h1 className="text-center font-bold text-2xl">Sign up to your account</h1>
+            <div class="mb-4 mt-10">
+      <label className="block text-gray-700 text-sm mb-2 font-semibold" for="username">
+        Email address
       </label>
-    )}
-
-    <div className="submit">
-      {isLogin ? (
-        <>
-          <Link href="/signup" legacyBehavior>
-            <a>I don't have an account</a>
-          </Link>
-          <button type="submit">Login</button>
-        </>
-      ) : (
-        <>
-          <Link href="/login" legacyBehavior>
-            <a>I already have an account</a>
-          </Link>
-          <button type="submit">Signup</button>
-        </>
-      )}
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 " id="username" name="email" type="email"/>
     </div>
-
+    <div className="">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="password">
+        Password
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-400 focus:border-2" id="password" name='password' type="password"/>
+    </div>
+    <div className="">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="confirmpassword">
+        Confirm Password
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-400 focus:border-2" id="confirmpassword" name="rpassword" type="password"/>
+    </div>
+    <p>Already a user? Log in</p>
+    <p id="mess"></p>
+    <div className='text-center mt-5'>
+      <input type="submit" value="Sing up"  className='bg-orange-600 font-semibold cursor-pointer block w-[100%] text-white h-10 rounded-md hover:bg-orange-700'/>
+            
+    </div>
+          
     {errorMessage && <p className="error">{errorMessage}</p>}
 
-    <style jsx>{`
-      form,
-      label {
-        display: flex;
-        flex-flow: column;
-      }
-      label > span {
-        font-weight: 600;
-      }
-      input {
-        padding: 8px;
-        margin: 0.3rem 0 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .submit {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .submit > a {
-        text-decoration: none;
-      }
-      .submit > button {
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        background: #fff;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .submit > button:hover {
-        border-color: #888;
-      }
-      .error {
-        color: brown;
-        margin: 1rem 0 0;
-      }
-    `}</style>
   </form>
 )
 
