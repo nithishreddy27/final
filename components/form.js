@@ -5,20 +5,20 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
     {/* <div className='sm:mx-auto sm:w-full sm:max-w-md'> */}
 
    <h1 className="text-center font-bold text-2xl">Sign up to your account</h1>
-            <div class="mb-4 mt-10">
-      <label className="block text-gray-700 text-sm mb-2 font-semibold" for="username">
+            <div className="mb-4 mt-10">
+      <label className="block text-gray-700 text-sm mb-2 font-semibold" htmlFor="username">
         Email address
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 " id="username" name="email" type="email"/>
     </div>
     <div className="">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="password">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="password">
         Password
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-400 focus:border-2" id="password" name='password' type="password"/>
     </div>
     <div className="">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="confirmpassword">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="confirmpassword">
         Confirm Password
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-400 focus:border-2" id="confirmpassword" name="rpassword" type="password"/>

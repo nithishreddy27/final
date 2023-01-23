@@ -2,7 +2,6 @@ import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res){
     const email=req.query;
-    // res.json(data.slug)
     const db=await clientPromise
     const datb=db.db("provast")
     console.log("conn")

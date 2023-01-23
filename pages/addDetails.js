@@ -4,6 +4,10 @@ import { useRouter } from "next/router";
 
 
 
+
+
+
+
 export default function AddDetails() {
   const router = useRouter();
   const {
@@ -13,7 +17,8 @@ export default function AddDetails() {
     email,
   };
   const [position, setPosition] = useState("student");
-
+  const [collegeId, setcollegeId] = useState("false")
+  const [mess, setmess] = useState()
 
   return (
     <>
@@ -56,6 +61,7 @@ export default function AddDetails() {
                       name="notification-method"
                       value="student"
                       className="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300"
+                      defaultChecked="true"
                       onChange={(event) => {
                         setPosition("student");
                       }}
@@ -104,11 +110,8 @@ export default function AddDetails() {
                     <div className="flex items-center">
                       <input
                         type="text"
-                        name="rollnumber"
-                        id="rollnumber"
-                        autoComplete="roll-number"
-                        required=""
-                        // value=""
+                        name="clgid"
+                        id="clgid"
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                         fdprocessedid="a94bca"
                       />
@@ -117,7 +120,7 @@ export default function AddDetails() {
                           type="button"
                           className="ml-3 mt-1 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-orange-700 bg-orange-100 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                           fdprocessedid="ekxexs"
-                        >
+                            onClick={checkCollege}>
                           Verify
                         </button>
                       </div>
@@ -130,6 +133,7 @@ export default function AddDetails() {
                       Enter a passphrase that associates with your college
                       placement cell.
                     </p>
+                    <p id="error" className="text-red-600">{mess}</p>
                   </div>
                   
                   <div className="grid grid-cols-6 gap-6 mt-4">
@@ -295,59 +299,60 @@ export default function AddDetails() {
                       />
                     </div>
                   </div>
-                  <div className="mt-4">
-                    <button
-                      type="submit"
-                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 "
-                      fdprocessedid="2gz5pi"
-                    >
-                      Submit
-                    </button>
+                  
+                  
+                  <div className="mt-4">      
+                  {collegeId=="true" && (<div className="mt-4">
+                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
+              </div>)
+              }
+              {
+                collegeId=="false" && (<div className="mt-4">
+                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-400  cursor-not-allowed" type="submit"> Submit </button>
+              </div>)
+              }
                     {/* <input type="submit" value="submit" /> */}
                   </div>
                 </div>
               )}
 
-
-
-
-
-
               {position == "college" && <div>
                 
-              <div class="col-span-6 sm:col-span-4 mt-4">
-                <div class="flex">
-                  <label for="paraphase" class="block text-sm font-medium text-gray-700">
+              <div className="col-span-6 sm:col-span-4 mt-4">
+                <div className="flex">
+                  <label for="paraphase" className="block text-sm font-medium text-gray-700">
                     Paraphase
                   </label>
-                  <span class="ml-1 text-red-600 font-semibold">*</span>
+                  <span className="ml-1 text-red-600 font-semibold">*</span>
                 </div>
-                <div class="flex items-center">
-                  <input type="text" name="rollnumber" id="rollnumber" required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
+                <div className="flex items-center">
+                  <input type="text" name="clgid" id="clgid" required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
                   <div>
                     <button
                       type="button"
-                      class="ml-3 mt-1 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-orange-700 bg-orange-100 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                      Verify
+                      className="ml-3 mt-1 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-orange-700 bg-orange-100 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                      onClick={checkCollege}>
+                      Verify 
                     </button>
                   </div>
                 </div>
-                <p class="mt-1 text-xs text-gray-500" id="pharaphase-description">
+                <p className="mt-1 text-xs text-gray-500" id="pharaphase-description">
                   Enter a passphrase that associates with your college placement
                   cell.
                 </p>
+                <p className="text-red-500">{mess}</p>
               </div>
 
                
-            <div class="grid grid-cols-6 gap-6 mt-4">
+            <div className="grid grid-cols-6 gap-6 mt-4">
               
-                <div class="col-span-6 sm:col-span-2 ">
+                <div className="col-span-6 sm:col-span-2 ">
         
-                    <div class="flex">
-                    <label for="firstName" class="block text-sm font-medium text-gray-700">
+                    <div className="flex">
+                    <label for="firstName" className="block text-sm font-medium text-gray-700">
                       First Name
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                     </div>
                   <input
                     type="text"
@@ -355,15 +360,15 @@ export default function AddDetails() {
                     id="firstName"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required/>
                 </div>
-                <div class="col-span-6 sm:col-span-2 ">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-2 ">
+                  <div className="flex">
                     <label
                       for="lastName"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Last name
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     type="text"
@@ -372,15 +377,15 @@ export default function AddDetails() {
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     required/>
                     </div>
-                    <div class="col-span-6 sm:col-span-2 relative -top-[23px]">
+                    <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
                   <label
-                    class="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
+                    className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
                     id="headlessui-listbox-label-1"
                   >
                     Gender
-                    <span class="ml-1 mt-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 mt-1 text-red-600 font-semibold">*</span>
                   </label>
-                  <div class="relative -top-[23px] left-0">
+                  <div className="relative -top-[23px] left-0">
                   <select name="gender" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
                         <option value="male">male</option>
                         <option value="female">female</option>
@@ -390,16 +395,16 @@ export default function AddDetails() {
 
                 </div>
             </div>
-            <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+            <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="rollnumber"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Roll Number
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     type="text"
@@ -410,15 +415,15 @@ export default function AddDetails() {
                     
                   />
                 </div>
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="phone"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Phone Number
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     type="tel"
@@ -428,16 +433,16 @@ export default function AddDetails() {
                   />
                 </div>
               </div>
-              <div class="relative">
-                <div class="flex">
-                  <label class="mt-4 mb-2 block text-sm font-medium text-gray-700">
+              <div className="relative">
+                <div className="flex">
+                  <label className="mt-4 mb-2 block text-sm font-medium text-gray-700">
                     College
                   </label>
-                  <span class="relative top-4 ml-1 text-red-600 font-semibold">
+                  <span className="relative top-4 ml-1 text-red-600 font-semibold">
                     *
                   </span>
                 </div>
-                <div class="relative">
+                <div className="relative">
                   <input
                     type="text"
                     required
@@ -445,16 +450,16 @@ export default function AddDetails() {
                   />
                 </div>
               </div>
-              <div class="grid grid-cols-6 gap-4">
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="designation"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Designation
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -463,15 +468,15 @@ export default function AddDetails() {
                     type="text"
                   />
                 </div>
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="website"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       College Website
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -480,15 +485,15 @@ export default function AddDetails() {
                     type="text"
                   />
                 </div>
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="email"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Placement Email address
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -497,15 +502,15 @@ export default function AddDetails() {
                     type="email"
                   />
                 </div>
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="phone"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Placement Phone Number
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -515,16 +520,16 @@ export default function AddDetails() {
                   />
                 </div>
               </div>
-              <div class="grid grid-cols-6 gap-4">
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="email"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Principal Email address
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -533,15 +538,15 @@ export default function AddDetails() {
                     type="email"
                   />
                 </div>
-                <div class="col-span-6 sm:col-span-3 mt-4">
-                  <div class="flex">
+                <div className="col-span-6 sm:col-span-3 mt-4">
+                  <div className="flex">
                     <label
                       for="phone"
-                      class="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Principal Phone Number
                     </label>
-                    <span class="ml-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <input
                     type="tel"
@@ -552,9 +557,18 @@ export default function AddDetails() {
                   />
                 </div>
               </div>
-              <div class="mt-4">
+
+
+              {collegeId=="true" && (<div className="mt-4">
                 <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
-              </div>
+              </div>)
+              }
+              {
+                collegeId=="false" && (<div className="mt-4">
+                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-400  cursor-not-allowed" type="submit"> Submit </button>
+              </div>)
+              }
+              
                 
                 </div>}
             </form>
@@ -563,4 +577,20 @@ export default function AddDetails() {
       </main>
     </>
   );
+  async function checkCollege(){
+    console.log("inside college");  
+    const clgid=document.getElementById("clgid").value
+    console.log(clgid)
+    const res=await fetch(`./api/checkCollege/${clgid}`)
+    // console.log(clgid)
+    if(res.status===200){
+      setmess("invalid paraphrase")
+      // document.getElementById("error").innerHTML=mess
+      setcollegeId("false")
+    }
+    else{
+      setmess("")
+      setcollegeId("true")
+    }
+}
 }
