@@ -3,23 +3,15 @@ import { useRouter } from "next/router";
 
 
 
-async function runMe(e){
-  
-
-  
-
-  const res = await fetch("/api/update")
-}
-
 
 export default function addDetails() {
-  const router = useRouter();
-  const {
-    query: { email },
-  } = router;
-  const props = {
-    email,
-  };
+  // const router = useRouter();
+  // const {
+  //   query: { email },
+  // } = router;
+  // const props = {
+  //   email,
+  // };
   const [position, setPosition] = useState("student");
 
 
@@ -36,7 +28,7 @@ export default function addDetails() {
             <div className="my-6 flex justify-between items-center">
               <div className="">
                 <span className="text-xs font-semibold">
-                  Signed In As : {props.email}
+                  Signed In As : noen
                 </span>
                 <span className="text-sm font-bold text-gray-600"></span>
               </div>
@@ -53,7 +45,8 @@ export default function addDetails() {
               </h2>
             </div>
 
-            <form method="POST" action={ `./api/update/${props.email}`}>
+            {/* <form method="POST" action={ `./api/update/${props.email}`}> */}
+            <form method="POST" action={ `./api/update`}>
             <fieldset className="mt-4">
                 <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                   <div className="flex items-center">

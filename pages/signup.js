@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
-import Layout from '../components/layout'
 import Form from '../components/form'
 
 const Signup = () => {
