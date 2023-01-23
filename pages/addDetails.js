@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React,{ useState } from "react";
 // import { useRouter } from "next/router";
 
@@ -8,6 +9,16 @@ import React,{ useState } from "react";
 // import React from 'react'
 
 export default function addDetails() {
+
+  const router = useRouter();
+  const{
+    query:{email}
+  } =router;
+  
+  const props={
+    email
+  }
+  
   return (
     <div>addDetails</div>
   )
