@@ -13,7 +13,7 @@
     "@next/font": "13.1.4",
     "@types/node": "18.11.18",
     "@types/react-dom": "18.0.10",
-    "cookie": "0.4.1",
+    "cookie": "^0.4.1",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
     "mongodb": "^4.8.1",
